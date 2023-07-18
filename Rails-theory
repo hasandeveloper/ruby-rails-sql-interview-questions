@@ -18,3 +18,19 @@ Very Important for active record RDBMS to make robust application
 https://guides.rubyonrails.org/active_record_querying.html#specifying-conditions-on-the-joined-tables
 
 what is html_safe?
+
+#callback and observer
+
+#dynamic scaffold and static scaffolding
+
+# User.find(4) User.find_by(4) User.find_by(id: 4) User.find_by_id(4) User.where(id: 4)
+
+; rails methods below
+
+; "".blank? #true
+
+; "".present? #false
+
+# [[1,2,3]].flatten [[1,2,3]].flatten!
+
+

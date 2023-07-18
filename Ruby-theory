@@ -20,3 +20,6 @@ OOPS
       
    end
 
+   "".empty?  #true
+   "".nil?  #false
+
