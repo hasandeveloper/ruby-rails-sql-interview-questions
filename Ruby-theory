@@ -20,6 +20,19 @@ OOPS
       
    end
 
+=> Boolean method
    "".empty?  #true
    "".nil?  #false
 
+=> Data types
+
+Data types in Ruby represents different types of data like text, string, numbers, etc. All data types are based on classes because it is a pure Object-Oriented language. There are different data types in Ruby as follows:
+
+Numbers
+Boolean
+Strings
+Hashes
+Arrays
+Symbols
+
+Numbers: Generally a number is defined as a series of digits, using a dot as a decimal mark. Optionally the user can use the underscore as a separator. There are different kinds of numbers like integers and float. Ruby can handle both Integers and floating point numbers. According to their size, there are two types of integers, one is Bignum and second is Fixnum.
