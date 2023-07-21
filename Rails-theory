@@ -34,3 +34,99 @@ what is html_safe?
 # [[1,2,3]].flatten [[1,2,3]].flatten!
 
 
+
+Rails 5 features compare to rails 4
+
+1. API only mode
+=> generate api only app in rails, rails-api gem is merged into Rails.
+		rails new my-api-only-app — api
+=> It creates an app that generates JSON responsed instead of HTML.
+
+2. ActionCable
+
+3. Inheriting ApplicationRecord
+=> All models will inherit from ApplicationRecord, not from ActiveRecord::Base
+	class Post < ApplicationRecord
+	end
+
+4. Active Record Attributes API
+=> Defines an attribute with a type on a model. which helps overriding the type of existing attributes if needed.
+=> It controls how values are converted to and from SQL when assigned to a model.
+	class Item < ApplicationRecord
+  		attribute :price_in_cents, MoneyType.new
+	end
+
+	class MoneyType < ActiveRecord::Type::Integer
+ 		def type_cast(value)
+   			#logic to implement ‘$2.00’ to 100
+ 		end
+	end
+
+item = Item.new(price_in_cents: ‘$2.00’)
+item.price_in_cents #=> 100
+
+5. has_secure_token method inclusion
+	Rails 5 has added has_secure_token method to generate a random alphanumeric token for a given column.
+		class User < ApplicationRecord
+ 			has_secure_token :token1
+		end
+
+		user = User.create
+		user.token1 #=> ‘e2426a93718d1817a43abbaa’
+		user.regenerate_token1
+
+6. Rake to Rails
+
+Rails 5 now requires Ruby 2.2.2 or greater
+
+
+
+What is turbo links?
+
+Turbolinks is a flexible and lightweight JavaScript library aimed to make your navigation through webpages faster. Turbolinks improves webpage performance by substituting the common full-page loads for partial loads in multi-page applications
+
+
+
+# ---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Rails 6 features compare to rails 5
+
+1.Credentials in Rails 6
+   Having master key to encrypt and decrypt
+2.Webpack 
+3.Supporting multiple databases
+
+* Rails 6 require Ruby version 2.5 or greater.
+
+
+
+
+# ---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+Rails 7 features compare to rails 6
+1. Asynchronous Querying
+	Developers can now use the load_async method while querying data to fetch results. This is time-savvy when asking multiple queries 		together. Using this, you can run-
+		def PostsController
+			def index
+				@posts = Post.load_async
+				@categories = Category.load_async
+			end
+		end
+This will fire two queries together. So, if each query took you 200ms, the total time fetching two results here would be 200 ms only, not 400 ms.
+
+2. Encrypted Database Layer
+	Rail 7 allows developers to encrypt certain database fields using the encrypts method on the ActiveRecord::Base. This means that after 		your initial setup, you have to write a code like this-
+		class Message < ApplicationRecord
+			encrypts :text
+		end
+The encrypted attributes are like any other attribute. Rails 7 will automatically encrypt and decrypt your application and its database.
+
+3. Webpack and Node are not required.
+
+4. UJS and Turbolinks is now replaced Stimulus and Turbo
+Applications using Rails 7 will now get Stimulus and Turbo (from Hotwire) from default. Hotwire is a modern approach to building web applications using minimal JavaScript by sending HTML and not JSON over the wire.
