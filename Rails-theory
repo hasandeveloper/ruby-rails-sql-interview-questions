@@ -33,6 +33,33 @@ what is html_safe?
 
 # [[1,2,3]].flatten [[1,2,3]].flatten!
 
+what is rake?
+
+
+
+what is delete and destroy in rails?
+
+Basically destroy runs any callbacks on the model while delete doesn't.
+
+From the Rails API:
+
+ActiveRecord::Persistence.delete
+
+Deletes the record in the database and freezes this instance to reflect that no changes should be made (since they can't be persisted). Returns the frozen instance.
+
+The row is simply removed with an SQL DELETE statement on the record's primary key, and no callbacks are executed.
+
+To enforce the object's before_destroy and after_destroy callbacks or any :dependent association options, use #destroy.
+
+ActiveRecord::Persistence.destroy
+
+Deletes the record in the database and freezes this instance to reflect that no changes should be made (since they can't be persisted).
+
+There's a series of callbacks associated with destroy. If the before_destroy callback return false the action is cancelled and destroy returns false. See ActiveRecord::Callbacks for further details.
+
+
+
+
 
 
 Rails 5 features compare to rails 4
@@ -130,3 +157,4 @@ The encrypted attributes are like any other attribute. Rails 7 will automaticall
 
 4. UJS and Turbolinks is now replaced Stimulus and Turbo
 Applications using Rails 7 will now get Stimulus and Turbo (from Hotwire) from default. Hotwire is a modern approach to building web applications using minimal JavaScript by sending HTML and not JSON over the wire.
+
