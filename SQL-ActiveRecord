@@ -1,0 +1,78 @@
+Return 3rd highest salary
+# SQL
+# select salaries.amount from salaries order by desc offset 2 limit 1
+
+# ActiveRecord
+# Employee.select(:salary).distinct().order(salary: :desc).limit(1).offset(2).pluck(:salary).first
+
+
+Return top 1 highest point
+# SQL
+# select points.number from points order by desc offset 1 limit 1
+
+#ActiverRecord
+#Point.order(points: asc).limit(1).pluck(:point).first 
+
+Return second highest point along with username
+# users
+# has_many :points
+
+# points
+# belongs_to :user
+
+# select users.name p.number from users 
+# join points p on user.id = point.user_id 
+# order by p.number desc 
+# offset 1 limit 2
+
+Return last one user
+# user
+# id
+# email
+# phone
+
+# select * from user order by id desc limit 1
+
+Return how many duplicate emails
+# select email count(email) from user groub by email having count(email) > 2;
+
+write a query to get uniq emails in the users
+# users
+
+# email
+
+# select email from users group by email having count(*) > 1;
+
+Last 5 records of tables
+# select * from person order id dsc limit(5) offset(0)
+
+
+write a query to get duplicate records in tables
+# select name, email COUNT(*) AS count from person group by name, email having count(*) > 1;
+
+write a query to get second highest unique salary.
+# select DISTINCT salary from person order by salary dsc limit 1 offset 1.
+
+There are three tables.
+    Employee - id, name
+    Employee_Salary - employee_id, salary
+    Employee_contact_info - employee_id, address, mobile number
+
+i.Write a query to get employee name and phone
+e number whose salary > 20000?
+
+# select e.name, eci.mobile_number
+# from employee
+# JOIN Employee_contact_info eci ON e.id = eci.id
+# JOIN Employee_Salary es ON e.id = es.id
+# where es.salary > 2000;
+
+ii. Write a query to get 5 highest paid employee name & phone number?
+
+# select e.name, eci.mobile_number
+# from employee
+# JOIN Employee_contact_info eci ON e.id = eci.id
+# JOIN Employee_Salary es ON e.id = es.id
+# order by es.salary dsc
+# limit 5
+# offset 0
