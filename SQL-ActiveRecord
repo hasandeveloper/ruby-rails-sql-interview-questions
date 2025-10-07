@@ -1,6 +1,6 @@
 Return 3rd highest salary
 # SQL
-# select salaries.amount from salaries order by desc offset 2 limit 1
+# select distinct salaries.amount from salaries order by salaries.amount desc offset 2 limit 1
 
 # ActiveRecord
 # Employee.select(:salary).distinct().order(salary: :desc).limit(1).offset(2).pluck(:salary).first
@@ -20,11 +20,14 @@ Return second highest point along with username
 # points
 # belongs_to :user
 
+# SQL
 # select users.name p.number from users 
-# join points p on user.id = point.user_id 
+# join points p on user.id = p.user_id 
 # order by p.number desc 
 # offset 1 limit 2
 
+# ActiveRecord
+# User.join(:points).select(user.name, point.number).order(points: :desc).limit(1).offset(1)
 Return last one user
 # user
 # id
