@@ -3,7 +3,7 @@ Return 3rd highest salary
 # select distinct salaries.amount from salaries order by salaries.amount desc offset 2 limit 1
 
 # ActiveRecord
-# Employee.select(:salary).distinct().order(salary: :desc).limit(1).offset(2).pluck(:salary).first
+# Employee.distinct.order(salary: :desc).offset(2).limit(1).pluck(:salary).first
 
 
 Return top 1 highest point
@@ -11,7 +11,8 @@ Return top 1 highest point
 # select points.number from points order by points.number desc limit 1
 
 #ActiverRecord
-#Point.order(points: asc).limit(1).pluck(:point).first 
+# Point.order(number: :desc).limit(1).pluck(:number).first
+
 
 Return second highest point along with username
 # users
@@ -39,7 +40,7 @@ Return last one user
 
 Return how many duplicate emails
 # SQL
-# select email count(email) from user groub by email having count(email) > 1;
+# select email count(email) from user group by email having count(email) > 1;
 # ActiveRecord
 # User.group(:email).having("COUNT(email) > 1").count
 
@@ -61,7 +62,7 @@ write a query to get duplicate records in tables
 # SQL
 # select name, email COUNT(*) AS count from person group by name, email having count(*) > 1;
 # ActiveRecord
-# User.select("email COUNT(*) AS count").group(:email).having("COUNT(*) > 1")
+# User.select("name, email, COUNT(*) AS count").group(:name, :email).having("COUNT(*) > 1")
 
 write a query to get second highest unique salary.
 # select DISTINCT salary from person order by salary dsc limit 1 offset 1.
